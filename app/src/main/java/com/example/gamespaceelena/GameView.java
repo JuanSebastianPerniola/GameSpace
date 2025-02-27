@@ -36,7 +36,7 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawBitmap(spaceship,spaceshipX,spaceshipY,paint);
+        canvas.drawBitmap(spaceship, spaceshipX, spaceshipY, paint);
         // Draw space ship
         int spaceshipX = (getWidth() - spaceship.getWidth()) / 2;
         int spaceshipY = (getHeight() - spaceship.getHeight()) / 2;
@@ -45,15 +45,20 @@ public class GameView extends View {
         int invaderHeight = invader.getHeight();
         int startX = 50;
         int startY = 50;
+        int spacing = 10; // Espacio entre invasores
 
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 5; col++) {
-                int x = startX + col * (invaderWidth + 20);
-                int y = startY + col * (invaderHeight + 20);
+        int columns = 5;
+        int rows = 5;
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                int x = startX + col * (invaderWidth + spacing);
+                int y = startY + row * (invaderHeight + spacing);
                 canvas.drawBitmap(invader, x, y, paint);
             }
         }
     }
+
     // case sensitve
     @Override
     public boolean onTouchEvent(MotionEvent event) {
